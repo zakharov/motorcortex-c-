@@ -1,2 +1,2 @@
-# motorcortex-c-
+# motorcortex-c#
 C# bindings for Motorcortex
