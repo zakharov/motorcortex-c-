@@ -1,0 +1,11 @@
+[Unit]
+Description=nng test service
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=forking
+ExecStart=/bin/bash -c "/home/ubuntu/workspace/motorcortex-csharp/test_nng/server_all.sh"
+ExecStop=killall nngcat
+
+[Install]
+WantedBy=multi-user.target
