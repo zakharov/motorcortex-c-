@@ -1,0 +1,35 @@
+
+motorcortex.CreateGroupMsg.alias			max_size:64
+motorcortex.CreateGroupMsg.paths			max_count:512
+motorcortex.CreateGroupMsg.paths			max_size:1024
+
+motorcortex.RemoveGroupMsg.alias            max_size:64
+
+motorcortex.GroupStatusMsg.alias			max_size:64
+motorcortex.GroupStatusMsg.params			max_count:512
+
+motorcortex.GroupMsg.params              	max_count:512
+
+motorcortex.ParameterInfo.path				max_size:1024
+
+motorcortex.GetParameterMsg.path			max_size:1024
+motorcortex.SetParameterMsg.path			max_size:1024
+
+motorcortex.OverwriteParameterMsg.path		max_size:1024
+motorcortex.ReleaseParameterMsg.path		max_size:1024
+
+motorcortex.ConsoleCmdMsg.value				max_size:1024
+
+motorcortex.LoginMsg.login                  max_size:64
+motorcortex.LoginMsg.password               max_size:64
+
+motorcortex.SessionTokenMsg.token           max_size:64
+motorcortex.RestoreSessionMsg.token         max_size:64
+
+motorcortex.SaveMsg.path				    max_size:960
+motorcortex.SaveMsg.file_name				max_size:64
+
+motorcortex.LoadMsg.path				    max_size:960
+motorcortex.LoadMsg.file_name				max_size:64
+
+motorcortex.ErrorList.errors              	max_count:42
