@@ -12,10 +12,11 @@ def test_udp():
                          socket.SOCK_DGRAM)  # UDP
     sock.bind(("", listen_on_port))
     counter = 0
-    joystick = [1, 2]
+    joystick_velocity_command = [1, 2]
     # packing command message
     while True:
-        command_message = struct.pack("I2f", counter & 0xffffffff, joystick[0], joystick[1])
+        command_message = struct.pack("I2f", counter & 0xffffffff, joystick_velocity_command[0],
+                                      joystick_velocity_command[1])
         sock.sendto(command_message, (robot_ip, robot_port))
 
         reply_message, addr = sock.recvfrom(1024)
