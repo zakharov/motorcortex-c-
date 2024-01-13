@@ -1,7 +1,7 @@
 import socket
 import struct
 
-robot_ip = "localhost"
+robot_ip = "ec2-3-149-25-0.us-east-2.compute.amazonaws.com"
 robot_port = 16389
 listen_on_port = 5005
 
