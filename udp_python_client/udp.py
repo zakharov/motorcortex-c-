@@ -1,6 +1,7 @@
 import socket
 import struct
 import requests
+import time
 
 robot_ip = "ec2-3-149-25-0.us-east-2.compute.amazonaws.com"
 robot_port = 16389
@@ -11,16 +12,27 @@ def test_http(url):
     status = requests.post(f"{url}/setParameter",
                            json={'Path': 'root/Control/temperatureSensor/switchOn',
                                  'Value': True})
-    print(status.text)
+    print(status.status_code)
     status = requests.post(f"{url}/setParameter",
                            json={'Path': 'root/Control/temperatureSensor/inputTemp',
                                  'Value': 0})
-    print(status.text)
+    print(status.status_code)
 
+    linear = 0.1
+    rotational = 0.1
     while True:
-        f = requests.post(f"{url}/getParameter",
-                          json={'Path': 'root/Control/temperatureSensor/measuredTemp'})
-        print(f.text)
+        temperature = requests.post(f"{url}/getParameter",
+                                    json={'Path': 'root/Control/temperatureSensor/measuredTemp'})
+        print(f"temperature: {temperature.text}")
+
+        requests.post(f"{url}/setParameter",
+                      json={'Path': 'root/Control/interpreterInVelocity', 'Value': [linear, rotational]})
+
+        coordinates = requests.post(f"{url}/getParameter",
+                                    json={'Path': 'root/Control/referenceCoordinates'})
+        print(f"coordinates: {coordinates.text}")
+
+        time.sleep(0.1)
 
 
 def test_udp():
